@@ -99,7 +99,7 @@ export default function configureApp(app: Express): void {
     async (req: Request, res: Response) => {
       try {
         const user = req.user as any;
-        if (user.isLogin === true) {
+        if (user.isLogin === true && user.dateOfBirth && user.timeOfBirth) {
           res.redirect(
             `https://mooladhara-frontend.vercel.app/chat?authToken=${user.authTokens[0]}`
           );

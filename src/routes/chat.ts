@@ -12,6 +12,7 @@ const router = Router();
 
 router.post(
   "/create",
+  auth,
   asyncMiddleware((req: CustomRequest, res: Response) => createChat(req, res))
 );
 router.put(

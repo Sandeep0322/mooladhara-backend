@@ -44,7 +44,7 @@ export const updateUsers = async (req: CustomRequest, res: Response) => {
     req.body;
   const user = Users.hydrate(req.user);
 
-  const encryptedSVG = compressEncrypt(svg);
+  // const encryptedSVG = compressEncrypt(svg)
   try {
     if (!user) {
       return res.status(404).json({ message: "Users not found" });
@@ -56,7 +56,7 @@ export const updateUsers = async (req: CustomRequest, res: Response) => {
     user.birthPlace = birthPlace;
     user.latitude = lat;
     user.longitude = lon;
-    user.encryptedSVG = encryptedSVG;
+    user.encryptedSVG = svg;
 
     await user.save();
     res.status(200).json(user);
@@ -92,8 +92,8 @@ export const getUsers = async (req: CustomRequest, res: Response) => {
       const data = astroOutput.filter((out) => out.attribute === obj);
       astroData.push(data[0]);
     });
-    const svg = decryptDecompress(user.encryptedSVG);
-    res.status(200).json({ user, astroData, svg });
+    // const svg = decryptDecompress(user.encryptedSVG);
+    res.status(200).json({ user, astroData, svg: user.encryptedSVG });
   } catch (error) {
     res.status(500).json({ message: "Server error", error });
   }

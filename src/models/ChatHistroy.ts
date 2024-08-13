@@ -18,16 +18,19 @@ const questionAnswerSchema = new Schema<QuestionAnswerInterface>({
   history: { type: Schema.Types.Mixed, default: null }, // Allows for nested history
 });
 
-const chatHistorySchema = new Schema<ChatHistoryDocument>({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "users",
+const chatHistorySchema = new Schema<ChatHistoryDocument>(
+  {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "users",
+    },
+    history: {
+      type: questionAnswerSchema,
+      required: true,
+    },
   },
-  history: {
-    type: questionAnswerSchema,
-    required: true,
-  },
-});
+  { timestamps: true }
+);
 
 const ChatHistory = mongoose.model<ChatHistoryDocument>(
   "chat_histories",
