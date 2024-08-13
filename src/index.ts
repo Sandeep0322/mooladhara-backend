@@ -24,8 +24,8 @@ export default function configureApp(app: Express): void {
     new GoogleStrategy(
       {
         clientID:
-          "54603994795-554bi5sfhd4tdro42dkki3fjdc093fdn.apps.googleusercontent.com",
-        clientSecret: "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",
+          "54603994795-3u5ko76ueeifj2sn7ut5ne0jvv60r7ou.apps.googleusercontent.com",
+        clientSecret: "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",
         callbackURL: "/auth/google/callback",
       },
       async (accessToken: any, refreshToken: any, profile: any, done: any) => {
