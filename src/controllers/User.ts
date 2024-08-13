@@ -85,7 +85,7 @@ export const getUsers = async (req: CustomRequest, res: Response) => {
         },
       }
     );
-    console.log(data);
+    console.log(data.data);
     let responseArray = JSON.parse(data.data.response.replace(/'/g, '"'));
     const astroData: any = [];
     responseArray.map((obj: any) => {
